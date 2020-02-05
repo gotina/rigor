@@ -9,15 +9,13 @@ import './App.css';
 const OWMKEY = '8c3e7fd0f6ec033c8ecf4379bb4cce9d';
 const OGKEY = '105d83d3523543558902f454f58714c6';
 
-const InitialState = {
-  weather: null,
-  forecast: null,
-  city: '',
-  error: '',
-}
-
 class App extends React.Component {
-  state = localStorage.getItem('appState') ? JSON.parse(localStorage.getItem('appState')) : InitialState;
+  state = {
+    weather: null,
+    forecast: null,
+    city: '',
+    error: '',
+  }
 
   componentDidMount() {
     if (!navigator.geolocation) {
