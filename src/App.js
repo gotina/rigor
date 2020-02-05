@@ -32,6 +32,7 @@ class App extends React.Component {
   }
 
   fetchData = (lat, lon) => {
+    this.setState({ weather: null, forecast: null })
     Promise.all([
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&APPID=${OWMKEY}`),
       fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&units=imperial&APPID=${OWMKEY}`),
