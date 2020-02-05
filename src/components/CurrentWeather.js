@@ -32,7 +32,7 @@ const CurrentWeather = React.memo(function CurrentWeather(props) {
               <span className="small muted">H: { Math.round(props.weather.main.temp_max) }{imperialUnit} </span>
               <span className="small muted">L: { Math.round(props.weather.main.temp_min) }{imperialUnit} </span>
             </div>
-            <h2 className="primary">
+            <h2 className="primary mb-0">
               { Math.round(props.weather.main.temp) }{imperialUnit}
             </h2>
             <small>(feels like { Math.round(props.weather.main.feels_like) }{imperialUnit})</small>
