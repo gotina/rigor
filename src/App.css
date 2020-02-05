@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  padding: 40px;
+}
+
+.card {
+  height: 100%;;
+}
+
+.primary {
+  color: #2f7ed8;
+}
+
+.secondary {
+  color: #e96e50;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2f7ed8;
+  border-color: #2f7ed8;
+}
