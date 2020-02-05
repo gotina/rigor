@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Row, Col, Form, Button, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, InputGroup, Alert } from 'react-bootstrap';
 import CurrentWeather from './components/CurrentWeather';
 import FiveDayForecast from './components/FiveDayForecast';
 import HistorySelector from './components/HistorySelector';
@@ -13,6 +13,7 @@ const InitialState = {
   weather: null,
   forecast: null,
   city: '',
+  error: '',
 }
 
 class App extends React.Component {
@@ -20,7 +21,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (!navigator.geolocation) {
-      alert('Geolocation is not supported by your browser');
+      this.setState({ error: 'Geolocation is not supported by your browser' });
     } else {
       navigator.geolocation.getCurrentPosition(this.success, this.error);
     }
@@ -55,7 +56,7 @@ class App extends React.Component {
   }
 
   error = () => {
-    alert('Unable to retrieve your location');
+    this.setState({ error: 'Unable to retrieve your location' });
   }
 
   handleChange = (event) => {
@@ -86,10 +87,26 @@ class App extends React.Component {
     this.setState(JSON.parse(localStorage.getItem(`wapp-${event.target.innerText}`)));
   }
 
+  handleDismiss = (event) => {
+    this.setState({ error: '' });
+  }
+
   render() {
+    let alert;
+
+    if (this.state.error) {
+      alert = <Alert variant="danger" onClose={this.handleDismiss} dismissible>{this.state.error}</Alert>;
+    } else {
+      alert = '';
+    }
+    
     return (
       <div className="App">
         <Container>
+          <Row>
+            <Col sm={12}>{ alert }
+            </Col>
+          </Row>
           <Row>
             <Col sm={4}>
               <Form onSubmit={this.handleSubmit}>

@@ -10,7 +10,7 @@ const HistorySelector = React.memo(function HistorySelector(props) {
   }
 
   let options = historyList.map((data, index) =>
-    <Dropdown.Item onClick={props.handleSelect}>{data} </Dropdown.Item>
+    <Dropdown.Item key={data} onClick={props.handleSelect}>{data} </Dropdown.Item>
   );
 
   return(
