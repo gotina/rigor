@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown} from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 const HistorySelector = React.memo(function HistorySelector(props) {
   const historyList = [];
@@ -10,13 +10,7 @@ const HistorySelector = React.memo(function HistorySelector(props) {
   }
 
   let options = historyList.map((data, index) =>
-    <Dropdown.Item onClick={props.handleSelect}>{data}</Dropdown.Item>
-    // <option 
-    //     key={index}
-    //     value={data}
-    // >
-    //     {data} x
-    // </option>
+    <Dropdown.Item onClick={props.handleSelect}>{data} </Dropdown.Item>
   );
 
   return(
